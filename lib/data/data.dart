@@ -26,35 +26,35 @@ final _salmon = Food(
 final _restaurant0 = Restaurant(
   imageUrl: 'assets/images/restaurant0.jpg',
   name: 'Safari Beach',
-  address: '200 Main St,  Maluku, Kinshasa',
+  address: '7 Main St,Maluku, Kin',
   rating: 5,
   menu: [_burrito, _steak, _pasta, _ramen, _pancakes, _burger, _pizza, _salmon],
 );
 final _restaurant1 = Restaurant(
   imageUrl: 'assets/images/restaurant1.jpg',
   name: 'Lac Ma Vallée',
-  address: '200 Main St, Mont- Ngafula, Kinshasa',
+  address: '2 Main, Mont-Ngafula, Kin',
   rating: 4,
   menu: [_steak, _pasta, _ramen, _pancakes, _burger, _pizza],
 );
 final _restaurant2 = Restaurant(
   imageUrl: 'assets/images/restaurant2.jpg',
   name: 'Chez Flore',
-  address: '200 Main St, Gombe, Kinshasa',
+  address: '200 Main St, Gombe, Kin',
   rating: 4,
   menu: [_steak, _pasta, _pancakes, _burger, _pizza, _salmon],
 );
 final _restaurant3 = Restaurant(
   imageUrl: 'assets/images/restaurant3.jpg',
   name: 'Kin Delicieux',
-  address: '200 Main St, Gombe, Kinshasa',
+  address: '200 Main St, Gombe, Kin',
   rating: 2,
   menu: [_burrito, _steak, _burger, _pizza, _salmon],
 );
 final _restaurant4 = Restaurant(
   imageUrl: 'assets/images/restaurant4.jpg',
   name: 'Malewa Ya Solo',
-  address: '200 Main St, Limete - Kingabwa, Kinshasa',
+  address: '200 Main St, Limete, Kin',
   rating: 3,
   menu: [_burrito, _ramen, _pancakes, _salmon],
 );
