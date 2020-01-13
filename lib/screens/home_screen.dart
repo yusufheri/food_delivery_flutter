@@ -40,13 +40,16 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             children: <Widget>[
               ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image(
-                  image: AssetImage(restaurant.imageUrl),
-                  fit: BoxFit.cover,
-                  height: 150.0,
-                  width: 150.0,
-                ),
+                borderRadius: BorderRadius.circular(15.0),                
+                child:  Hero(
+                    tag: restaurant.imageUrl,
+                    child: Image(
+                            image: AssetImage(restaurant.imageUrl),
+                            fit: BoxFit.cover,
+                            height: 150.0,
+                            width: 150.0,
+                          )
+                 ) ,
               ),
               Container(
                 margin: EdgeInsets.all(12.0),
@@ -63,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(height: 4.0,),
-                    RatingStarts(rating: restaurant.rating),
+                    RatingStarts(rating: restaurant.rating, taille: 26.0,),
                     Text(
                       restaurant.address,
                       style: TextStyle(

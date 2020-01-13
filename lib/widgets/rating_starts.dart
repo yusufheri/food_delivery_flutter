@@ -4,8 +4,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 class RatingStarts extends StatelessWidget {
  
 final int rating;
+final double taille;
 
-RatingStarts({this.rating});
+RatingStarts({this.rating, this.taille});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ RatingStarts({this.rating});
         direction: Axis.horizontal,
         allowHalfRating: true,
         itemCount: 5,
-        itemSize: 26.0,
+        itemSize: taille,
         itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
         itemBuilder: (context, _) => Icon(
           Icons.star,
