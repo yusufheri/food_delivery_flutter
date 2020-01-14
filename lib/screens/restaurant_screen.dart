@@ -107,14 +107,14 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
            Stack(
              children: <Widget>[
                Hero(
-                 tag: widget.restaurant.imageUrl,
-                 child: Image(
+                 tag: widget.restaurant.name,
+                 child:  Image(
                       height: 200.0,
                       width: MediaQuery.of(context).size.width,
                       fit: BoxFit.cover,
                       image: AssetImage(widget.restaurant.imageUrl),
-                    ),
-               ),
+                    )
+               ) ,
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 35.0),
                   child: Row(

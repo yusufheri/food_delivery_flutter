@@ -24,14 +24,14 @@ double total;
             child:  Row(
               children: <Widget>[
                 Container(
-                  width: 150.0,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image:AssetImage(order.food.imageUrl),
-                      fit: BoxFit.cover
+                    width: 150.0,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image:AssetImage(order.food.imageUrl),
+                        fit: BoxFit.cover
+                      ),
+                      borderRadius: BorderRadius.circular(15.0)
                     ),
-                    borderRadius: BorderRadius.circular(15.0)
-                  ),
                 ),
                 Expanded(
                   child: Container(
@@ -57,20 +57,79 @@ double total;
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
-                        Counter(
-                              buttonSize: 25.0,
-                              color: Theme.of(context).primaryColor,
-                              initialValue: order.quantity,
-                              minValue: 1,
-                              maxValue: 100,
-                              step: 1,
-                              decimalPlaces: 1,
-                              onChanged: (value) { // get the latest value from here
-                                setState(() {
-                                  //  order.quantity = value;
-                                });
-                              },
-                            ),                        
+                        Container(
+                          width: 100.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            border: Border.all(
+                              width: 0.8,
+                              color: Colors.black54
+                            )
+                          ),
+                          child: Container(
+                            padding: new EdgeInsets.all(4.0),
+                            child: new Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                               children: [
+                                  GestureDetector(
+                                   onTap: () {
+                                     if (order.quantity > 1) {
+                                       setState(() {
+                                           order.quantity--;
+                                       });                                     
+                                     }
+                                   },child: Text(
+                                     '-',
+                                     style: TextStyle(
+                                       fontSize: 24.0,
+                                       fontWeight: FontWeight.w600,
+                                       color: Theme.of(context).primaryColor,
+                                     ),
+                                   ),
+                                 ),
+                                  SizedBox(width: 20.0),
+                                  Text(
+                                    '${order.quantity.toStringAsFixed(0)}',
+                                    style: TextStyle(
+                                       fontSize: 20.0,
+                                       fontWeight: FontWeight.w600,
+                                     ),
+                                  ),
+                                  SizedBox(width: 20.0),
+                                  GestureDetector(
+                                   onTap: () {
+                                    setState(() {
+                                      if (order.quantity < 10) {
+                                         order.quantity++;
+                                      }                                     
+                                    });
+                                   },child: Text(
+                                     '+',
+                                     style: TextStyle(
+                                       fontSize: 24.0,
+                                       fontWeight: FontWeight.w600,
+                                       color: Theme.of(context).primaryColor,
+                                     ),
+                                   ),
+                                 ),
+                               ]
+                            )
+                          )
+                          /* Counter(
+                            buttonSize: 25.0,
+                            color: Theme.of(context).primaryColor,
+                            initialValue: order.quantity,
+                            minValue: 1,
+                            maxValue: 100,
+                            step: 1,
+                            decimalPlaces: 0,
+                            onChanged: (value) { // get the latest value from here
+                              setState(() {
+                                //  order.quantity = value;
+                              });
+                            },
+                          ), */
+                        )      
                       ],
                     ),
                   ),
@@ -98,9 +157,9 @@ double total;
     double totalPrice = 0;
     currentUser.cart.forEach((Order order) => totalPrice += order.quantity * order.food.price);
 
-    return Scaffold(
+    return new Scaffold(
       appBar: AppBar(
-        title: Text('Cart (${currentUser.cart.length})'),
+        title: Text('Mon panier (${currentUser.cart.length})'),
         centerTitle: true,
       ),
       body: ListView.separated(
@@ -109,6 +168,7 @@ double total;
           if (index < currentUser.cart.length) {
             Order order = currentUser.cart[index];
             return _buildCartItem(order);
+            
           }
           return Padding(
             padding: EdgeInsets.all(20.0),
@@ -164,6 +224,36 @@ double total;
             color: Colors.green,
           );
         },
+      ),
+      bottomSheet: Container(
+        height: 80.0,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              offset: Offset(0, -1),
+              blurRadius: 6.0
+            )
+          ]
+        ),
+        child: Center(
+          child: FlatButton(
+             child: Text(
+                'CHECKOUT',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2.0
+                )
+          ),
+          onPressed: () {
+            print("Merci bcp");
+          },
+          ),
+        ),
       ),
     );
   }

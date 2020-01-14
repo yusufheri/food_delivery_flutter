@@ -1,3 +1,4 @@
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:food_delivery/data/data.dart';
@@ -43,15 +44,15 @@ class _HomeScreenState extends State<HomeScreen> {
             children: <Widget>[
               ClipRRect(
                 borderRadius: BorderRadius.circular(15.0),                
-                child:  Hero(
-                    tag: restaurant.imageUrl,
-                    child: Image(
-                            image: AssetImage(restaurant.imageUrl),
-                            fit: BoxFit.cover,
-                            height: 150.0,
-                            width: 150.0,
-                          )
-                 ) ,
+                child: Hero(
+                  tag: restaurant.name,
+                  child: Image(
+                        image: AssetImage(restaurant.imageUrl),
+                        fit: BoxFit.cover,
+                        height: 150.0,
+                        width: 150.0,
+                      )
+                )
               ),
               Container(
                 margin: EdgeInsets.all(12.0),
@@ -112,22 +113,46 @@ class _HomeScreenState extends State<HomeScreen> {
            ),
            title: Text("Food Delivery"),
            actions: <Widget>[
-             FlatButton(
-               child: Text(
-                 "Cart (${currentUser.cart.length})",
-                 style: TextStyle(
-                   color: Colors.white,
-                   fontSize: 18.0
-                 )
-                ),
-               onPressed: () => Navigator.push(
-                 context, 
-                 MaterialPageRoute(
-                  builder: (_) => CartScreen()
-               )
-               )
-               // onPressed: (){},
-             )
+             Stack(
+               alignment: Alignment.center,
+               children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(right: 5.0, bottom: 5.0, top: 5.0),
+                    margin: EdgeInsets.only(right: 5.0),
+                    child: FloatingActionButton(               
+                          backgroundColor: Theme.of(context).primaryColor,
+                          tooltip: 'Mon panier',
+                          isExtended: true,
+                          heroTag: "Merci",
+                          child: Icon(
+                            Icons.shopping_cart,
+                            color: Colors.white,
+                            size: 30.0                 
+                          ),
+                          onPressed: () => Navigator.push(
+                            context, 
+                            MaterialPageRoute(
+                              builder: (_) => CartScreen()
+                            )
+                          )
+                        )
+                  ),                 
+                  Positioned(                    
+                    bottom: 37.0,
+                    right: 30.0,
+                    child: Text(
+                      '${currentUser.cart.length}',
+                      textAlign: TextAlign.center,                      
+                      style: TextStyle(
+                        color:  Colors.white,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w600,                        
+                        //  letterSpacing: 1.2
+                      )
+                    ),
+                  )
+               ],
+             ),
            ],
          ),
          body: ListView(
@@ -166,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                  Padding(
                    padding: EdgeInsets.symmetric(horizontal: 20.0),
                    child: Text(
-                     'Nearly Restaurants',
+                     'Restaurants proches',
                      style: TextStyle(
                        fontSize: 24.0,
                        fontWeight: FontWeight.w600,

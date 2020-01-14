@@ -95,7 +95,7 @@ class RecentOrders extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 18.0),
           child: Text(
-            'Recent Orders', 
+            'Dernières commandes', 
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.w600,
