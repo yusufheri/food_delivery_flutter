@@ -6,6 +6,8 @@ import 'package:food_delivery/screens/restaurant_screen.dart';
 import 'package:food_delivery/widgets/rating_starts.dart';
 import 'package:food_delivery/widgets/recent_orders.dart';
 
+import 'cart_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
 
@@ -118,7 +120,13 @@ class _HomeScreenState extends State<HomeScreen> {
                    fontSize: 18.0
                  )
                 ),
-               onPressed: () {},
+               onPressed: () => Navigator.push(
+                 context, 
+                 MaterialPageRoute(
+                  builder: (_) => CartScreen()
+               )
+               )
+               // onPressed: (){},
              )
            ],
          ),
