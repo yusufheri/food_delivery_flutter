@@ -123,6 +123,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
         onPressed: () {
           currentUser.cart.removeAt(currentUser.cart.length-1);
         },
+        
       ),
     );
 
